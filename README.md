@@ -1,6 +1,6 @@
 # 🛸 Antigravity: Professional AI IDE Bridge
 
-**Antigravity** is a high-performance, autonomous AI IDE agent that transforms VS Code into a professional-grade development powerhouse. By bridging your local workspace with the sophisticated reasoning of Claude.ai via a resilient browser automation layer, Antigravity provides a seamless "Antigravity-agent" experience with zero API costs.
+**Antigravity** is a high-performance, autonomous AI IDE agent that transforms VS Code into a professional-grade development powerhouse. By bridging your local workspace with the sophisticated reasoning of Claude.ai via a resilient browser automation layer, Antigravity provides a seamless agentic experience with zero API costs.
 
 ---
 
