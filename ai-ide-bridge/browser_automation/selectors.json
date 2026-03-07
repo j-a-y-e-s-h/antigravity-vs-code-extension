@@ -1,0 +1,23 @@
+{
+  "chat_input": [
+    "div[contenteditable=\"true\"]",
+    "fieldset textarea",
+    ".ProseMirror"
+  ],
+  "message_box": [
+    "[data-message-author=\"assistant\"]",
+    ".font-claude-message"
+  ],
+  "copy_buttons": [
+    "button[aria-label*=\"Copy\"]",
+    "button[title*=\"Copy\"]",
+    ".text-text-500.hover\\:text-text-400"
+  ],
+  "stop_buttons": [
+    "button[aria-label*=\"Stop\"]",
+    "button[title*=\"Stop\"]"
+  ],
+  "chat_links": [
+    "a[href^=\"/chat/\"]"
+  ]
+}

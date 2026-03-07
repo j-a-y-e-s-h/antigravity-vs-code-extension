@@ -1,0 +1,25 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+.env
+
+# Browser automation data (bulky & locked)
+ai-ide-bridge/browser_profile/
+ai-ide-bridge/sessions/
+ai-ide-bridge/browser_automation/sessions/
+
+# VS Code / IDE
+.vscode/
+*.code-workspace
+node_modules/
+out/
+dist/
+
+# OS generated files
+.DS_Store
+Thumbs.db

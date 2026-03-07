@@ -1,0 +1,130 @@
+{
+  "name": "ai-ide-assistant",
+  "displayName": "AI IDE Assistant",
+  "description": "AI-powered coding assistant using free AI services",
+  "version": "1.0.0",
+  "publisher": "your-publisher-name",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Linters",
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:ai-assistant.analyzeFile",
+    "onCommand:ai-assistant.fixError",
+    "onCommand:ai-assistant.askQuestion",
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "ai-assistant.analyzeFile",
+        "title": "AI: Analyze Current File"
+      },
+      {
+        "command": "ai-assistant.fixError",
+        "title": "AI: Suggest Fix"
+      },
+      {
+        "command": "ai-assistant.askQuestion",
+        "title": "AI: Ask Question"
+      },
+      {
+        "command": "ai-assistant.refactorCode",
+        "title": "AI: Refactor Selection"
+      },
+      {
+        "command": "ai-assistant.explainCode",
+        "title": "AI: Explain Code"
+      },
+      {
+        "command": "ai-assistant.setWorkspace",
+        "title": "AI: Set Workspace"
+      },
+      {
+        "command": "ai-assistant.deepWorkspaceTask",
+        "title": "AI: Deep Workspace Agent Task"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "ai-assistant.deepWorkspaceTask",
+          "group": "ai-assistant"
+        },
+        {
+          "command": "ai-assistant.analyzeFile",
+          "group": "ai-assistant",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "ai-assistant.explainCode",
+          "group": "ai-assistant",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "ai-assistant.refactorCode",
+          "group": "ai-assistant",
+          "when": "editorHasSelection"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "ai-assistant-sidebar",
+          "title": "AI Assistant",
+          "icon": "$(hubot)"
+        }
+      ]
+    },
+    "views": {
+      "ai-assistant-sidebar": [
+        {
+          "type": "webview",
+          "id": "ai-assistant.chatView",
+          "name": "Chat"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "AI IDE Assistant",
+      "properties": {
+        "ai-assistant.serverUrl": {
+          "type": "string",
+          "default": "http://localhost:8000",
+          "description": "MCP Bridge Server URL"
+        },
+        "ai-assistant.autoAnalyze": {
+          "type": "boolean",
+          "default": false,
+          "description": "Automatically analyze files on save"
+        },
+        "ai-assistant.projectType": {
+          "type": "string",
+          "enum": ["python", "odoo", "nodejs", "java", "cpp", "other"],
+          "default": "python",
+          "description": "Project type for context-aware assistance"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "@types/vscode": "^1.75.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "axios": "^1.6.0"
+  }
+}
