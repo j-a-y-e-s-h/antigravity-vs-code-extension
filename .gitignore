@@ -19,6 +19,8 @@ ai-ide-bridge/browser_automation/sessions/
 node_modules/
 out/
 dist/
+vscode-ai-assistant/tsc_output.txt
+vscode-ai-assistant.zip
 
 # OS generated files
 .DS_Store
