@@ -1,36 +1,33 @@
-import * as vscode from 'vscode';
+﻿import * as vscode from 'vscode';
 
 export class StatusBarManager implements vscode.Disposable {
-    private statusBarItem: vscode.StatusBarItem;
+    private item: vscode.StatusBarItem;
 
     constructor() {
-        this.statusBarItem = vscode.window.createStatusBarItem(
-            vscode.StatusBarAlignment.Right,
-            100
-        );
-        this.statusBarItem.command = 'ai-assistant.askQuestion';
+        this.item = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
+        this.item.command = 'ai-assistant.askQuestion';
         this.setDisconnected();
-        this.statusBarItem.show();
+        this.item.show();
     }
 
-    setConnected(): void {
-        this.statusBarItem.text = '$(check) AI Assistant';
-        this.statusBarItem.tooltip = 'AI Assistant connected - Click to ask a question';
-        this.statusBarItem.backgroundColor = undefined;
+    setConnected(model?: string): void {
+        this.item.text = '$(check) AI' + (model ? ' (' + model + ')' : '');
+        this.item.tooltip = 'AI Assistant connected â€” click to ask a question';
+        this.item.backgroundColor = undefined;
+        this.item.color = undefined;
     }
 
     setDisconnected(): void {
-        this.statusBarItem.text = '$(x) AI Assistant';
-        this.statusBarItem.tooltip = 'AI Assistant disconnected - Server not running';
-        this.statusBarItem.backgroundColor = new vscode.ThemeColor('statusBarItem.errorBackground');
+        this.item.text = '$(x) AI Offline';
+        this.item.tooltip = 'AI Assistant: server not running';
+        this.item.backgroundColor = new vscode.ThemeColor('statusBarItem.errorBackground');
     }
 
     setWorking(): void {
-        this.statusBarItem.text = '$(sync~spin) AI Assistant';
-        this.statusBarItem.tooltip = 'AI Assistant is processing...';
+        this.item.text = '$(sync~spin) AI Working...';
+        this.item.tooltip = 'AI Assistant is processing...';
+        this.item.backgroundColor = undefined;
     }
 
-    dispose(): void {
-        this.statusBarItem.dispose();
-    }
+    dispose(): void { this.item.dispose(); }
 }

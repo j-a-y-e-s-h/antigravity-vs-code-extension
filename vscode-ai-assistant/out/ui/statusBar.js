@@ -4,28 +4,28 @@ exports.StatusBarManager = void 0;
 const vscode = require("vscode");
 class StatusBarManager {
     constructor() {
-        this.statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
-        this.statusBarItem.command = 'ai-assistant.askQuestion';
+        this.item = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
+        this.item.command = 'ai-assistant.askQuestion';
         this.setDisconnected();
-        this.statusBarItem.show();
+        this.item.show();
     }
-    setConnected() {
-        this.statusBarItem.text = '$(check) AI Assistant';
-        this.statusBarItem.tooltip = 'AI Assistant connected - Click to ask a question';
-        this.statusBarItem.backgroundColor = undefined;
+    setConnected(model) {
+        this.item.text = '$(check) AI' + (model ? ' (' + model + ')' : '');
+        this.item.tooltip = 'AI Assistant connected â€” click to ask a question';
+        this.item.backgroundColor = undefined;
+        this.item.color = undefined;
     }
     setDisconnected() {
-        this.statusBarItem.text = '$(x) AI Assistant';
-        this.statusBarItem.tooltip = 'AI Assistant disconnected - Server not running';
-        this.statusBarItem.backgroundColor = new vscode.ThemeColor('statusBarItem.errorBackground');
+        this.item.text = '$(x) AI Offline';
+        this.item.tooltip = 'AI Assistant: server not running';
+        this.item.backgroundColor = new vscode.ThemeColor('statusBarItem.errorBackground');
     }
     setWorking() {
-        this.statusBarItem.text = '$(sync~spin) AI Assistant';
-        this.statusBarItem.tooltip = 'AI Assistant is processing...';
+        this.item.text = '$(sync~spin) AI Working...';
+        this.item.tooltip = 'AI Assistant is processing...';
+        this.item.backgroundColor = undefined;
     }
-    dispose() {
-        this.statusBarItem.dispose();
-    }
+    dispose() { this.item.dispose(); }
 }
 exports.StatusBarManager = StatusBarManager;
 //# sourceMappingURL=statusBar.js.map
